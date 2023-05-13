@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/filip/CLionProjects/TicTacToePK/Computer.cpp
+Computer.h
+C:/Users/filip/CLionProjects/TicTacToePK/Computer.h
+vector
+-
+
+C:/Users/filip/CLionProjects/TicTacToePK/Computer.h
+Game.h
+C:/Users/filip/CLionProjects/TicTacToePK/Game.h
+vector
+-
+
+C:/Users/filip/CLionProjects/TicTacToePK/Game.h
+iostream
+-
+vector
+-
+

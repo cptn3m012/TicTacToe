@@ -1,0 +1,3 @@
+C:/Users/filip/CLionProjects/TicTacToePK/cmake-build-debug/CMakeFiles/TicTacToePK.dir
+C:/Users/filip/CLionProjects/TicTacToePK/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/filip/CLionProjects/TicTacToePK/cmake-build-debug/CMakeFiles/rebuild_cache.dir
