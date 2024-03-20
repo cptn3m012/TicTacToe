@@ -20,5 +20,5 @@ This Tic-Tac-Toe project, created for the "Basics of Programming" course, featur
 ## Contributing
 Contributions are welcome! If you have suggestions or improvements, please fork the repository and create a pull request.
 
-##License
+## License
 This project is open-sourced under the MIT License. See the LICENSE file for more details.
