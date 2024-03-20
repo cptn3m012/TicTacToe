@@ -4,28 +4,6 @@
 using namespace std;
 
 /*
-* Metoda, dzięki, której rysowana jest plansza do gry.
-* W danej metodzie operator << został przeciążony.
-*/
-
-ostream& operator<< (ostream& out, const Game& obj){
-    out << "    " << 0 << "    " << 1 << "    " << 2;
-    for (int i = 0; i < 9; i++)
-    {
-        if (i == 0)
-            out << endl << "0 ";
-        if (i == 3)
-            out << endl << "1 ";
-        if (i == 6)
-            out << endl << "2 ";
-
-        out << "| " << obj.gameBoard.at(i) << " |";
-    }
-    out << endl << endl;
-    return out;
-}
-
-/*
 * Metoda polega na wstawieniu znaku gracza na plansze i walidacji danych.
 * Metoda sprawdza czy putX wynosi X, ponieważ człowiek zawsze gra jako X.
 * Jeżeli jest to X to w terminalu pojawia się pytanie o to, gdzie chcę
@@ -40,14 +18,14 @@ ostream& operator<< (ostream& out, const Game& obj){
 void Game::putOnBoard(char putX) {
     bool error = false;
     do {
-        cout << *this << endl;
+        cout << gameBoard;
         error = false;
 
         cout << "Gdzie chcesz swój znak? ";
         cin >> mark;
         cout << endl;
 
-        if (mark<0 || mark>9 || gameBoard[mark - 1] == 'X' || gameBoard[mark - 1] == 'O') {
+        if (mark < 0 || mark>9 || gameBoard[mark - 1] == 'X' || gameBoard[mark - 1] == 'O') {
             error = true;
             cout << "Nie możesz postawić znaku w tym miejscu" << endl;
             cout << "Spróbuj jeszcze raz" << endl;
@@ -83,23 +61,23 @@ void Game::checkForWin() {
         || gameBoard[1] == 'O' && gameBoard[4] == 'O' && gameBoard[7] == 'O' || gameBoard[2] == 'O' && gameBoard[5] == 'O' && gameBoard[8] == 'O')
     {
         cout << "Komputer wygrał!!!!" << endl;
-        cout << *this << endl;
+        cout << gameBoard << endl;
         exit(0);
     }
-        //sprawdzenie w ukosie czy nie ma wygranej
+    //sprawdzenie w ukosie czy nie ma wygranej
     else if (gameBoard[0] == 'O' && gameBoard[4] == 'O' && gameBoard[8] == 'O' || gameBoard[6] == 'O' && gameBoard[4] == 'O' && gameBoard[2] == 'O')
     {
         cout << "Komputer wygrał!!!" << endl;
-        cout << *this << endl;
+        cout << gameBoard << endl;
         exit(0);
 
     }
-        //sprawdzenie czy na planszy żadna z liczb nie jest liczbą od 1 do 9
+    //sprawdzenie czy na planszy żadna z liczb nie jest liczbą od 1 do 9
     else if (gameBoard[0] != '1' && gameBoard[1] != '2' && gameBoard[2] != '3' && gameBoard[3] != '4' && gameBoard[4] != '5' && gameBoard[5] != '6'
-             && gameBoard[6] != '7' && gameBoard[7] != '8' && gameBoard[8] != '9')
+        && gameBoard[6] != '7' && gameBoard[7] != '8' && gameBoard[8] != '9')
     {
         cout << "Remis!!!" << endl;
-        cout << *this << endl;
+        cout << gameBoard << endl;
         exit(0);
     }
 
@@ -127,7 +105,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-        // sprawdzenie drugiego wiersza
+    // sprawdzenie drugiego wiersza
     else if (gameBoard[3] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[5] = 'O';
@@ -141,7 +119,7 @@ void Game::defense() {
         gameBoard[3] = 'O';
     }
 
-        //sprawdzenie trzeciego wiersza
+    //sprawdzenie trzeciego wiersza
     else if (gameBoard[6] == 'X' && gameBoard[7] == 'X')
     {
         gameBoard[8] = 'O';
@@ -169,7 +147,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-        //sprawdzenie drugiej kolumny
+    //sprawdzenie drugiej kolumny
     else if (gameBoard[1] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[7] = 'O';
@@ -183,7 +161,7 @@ void Game::defense() {
         gameBoard[1] = 'O';
     }
 
-        //sprawdzenie trzeciej kolumny
+    //sprawdzenie trzeciej kolumny
     else if (gameBoard[2] == 'X' && gameBoard[5] == 'X')
     {
         gameBoard[8] = 'O';
@@ -212,7 +190,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-        //sprawdzenie drugiej przekątnej
+    //sprawdzenie drugiej przekątnej
     else if (gameBoard[2] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[6] = 'O';

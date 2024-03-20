@@ -9,7 +9,7 @@ using namespace std;
 * Klasa Computer
 */
 
-class Computer : public Virtual
+class Computer : public Player
 {
 public:
     void game() override; //przesłoniona metoda

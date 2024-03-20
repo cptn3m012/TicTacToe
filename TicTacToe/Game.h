@@ -1,19 +1,17 @@
-#ifndef TicTacToe_Game_hpp
-#define TicTacToe_Game_hpp
-#include <iostream>
-#include <vector>
+#pragma once
 
-using namespace std;
+#include "Board.h" // Dołącz nową klasę Board
+#include <iostream>
 
 /*
 * Klasa Game
 */
 
-class Game{
+class Game {
 public:
-    vector<char> gameBoard = { '1','2','3','4','5','6','7','8','9' };//wektor wypełniony znakami od 1 do 9
-    friend ostream& operator<<(ostream& ,const Game& );
-    int mark;
+    Board gameBoard;
+
+    int mark{};
     void putOnBoard(char);
     void checkForWin();
     void defense();
@@ -24,10 +22,9 @@ public:
 /*
  * Klasa Abstrakcyjna
  */
-class Virtual : public Game{
+class Player : public Game {
 public:
     virtual void game() = 0;
-    virtual ~Virtual() = default;
+    virtual ~Player() = default;
 };
 
-#endif

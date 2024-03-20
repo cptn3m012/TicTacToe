@@ -13,7 +13,7 @@ int main() {
     Game play;
     int checkStart;
 
-    Virtual* ptr = nullptr; //zerowanie wskaźnika
+    Player* ptr = nullptr; //zerowanie wskaźnika
 
     checkStart = person.whoStart();
 

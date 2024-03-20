@@ -1,26 +1,30 @@
-/*#include "Board.h"
+#include "Board.h"
 #include <iostream>
 
-using namespace std;
+//Method by which the game board is drawn.
 
-*//*
-* Metoda, dzięki, której rysowana jest plansza do gry.
-* W danej metodzie operator << został przeciążony.
-*//*
-
-ostream& operator<< (ostream& out, const Board& obj){
+// Definition of the overloaded insertion (<<) operator
+// This function is used to print the game board to an output stream
+std::ostream& operator<<(std::ostream& out, const Board& board) {
+    // Print the column headers
     out << "    " << 0 << "    " << 1 << "    " << 2;
+
+    // Loop through each element in the gameBoard to print the board state
     for (int i = 0; i < 9; i++)
     {
+        // At the start of each row, print the row number
         if (i == 0)
-            out << endl << "0 ";
+            out << std::endl << "0 ";
         if (i == 3)
-            out << endl << "1 ";
+            out << std::endl << "1 ";
         if (i == 6)
-            out << endl << "2 ";
+            out << std::endl << "2 ";
 
-        out << "| " << obj.gameBoard.at(i) << " |";
+        // Print each cell with a border
+        out << "| " << board[i] << " |";  // Uses the overloaded subscript operator to access gameBoard elements
     }
-    out << endl << endl;
+    out << std::endl << std::endl;
+
     return out;
-}*/
+}
+

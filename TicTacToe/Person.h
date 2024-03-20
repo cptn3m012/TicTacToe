@@ -8,7 +8,7 @@ using namespace std;
 /*
 * Klasa Person
 */
-class Person : public Virtual
+class Person : public Player
 {
 public:
     int whoStart();
