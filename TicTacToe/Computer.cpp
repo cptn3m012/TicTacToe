@@ -5,12 +5,13 @@
 using namespace std;
 
 /*
-* Sztuczna inteligencja dla komputera została zrobiona tak, że komputer zaczyyna grę zawsze od jednego
-* rogu, i oczekuje na ruch człowieka, dzięki czemu może on sprawdzić możliwości kolejnego ruchu,
-* który wykonuje i w ruchach, gdzie możliwa jest już wygrana komputera wykonuje swój ostatni ruch,
-* dzięki metodzie lastMove, a następnie sprawdza czy komputer już sięgnął po wygraną.
+* The computer's artificial intelligence is strategically designed to initiate the game from a corner position.
+* This initial placement allows the AI to observe and respond to the human player's subsequent move,
+* facilitating an opportunity to evaluate and execute a counter-strategy. The AI anticipates sequences that
+* lead to a potential victory and capitalizes on these moments by deploying the lastMove method.
+* Following each move, the AI conducts a win check to ascertain if the recent move has culminated in victory.
 *
-* Źródła z których niektóre możliwe kobinacje kółka i krzyżyk zostały zaczerpnięte:
+*  Sources from which some possible cobinations of Tic Tac Toe were taken::
 * https://www.youtube.com/watch?v=OmC07DvEayY&t=83s
 * https://sites.google.com/a/g2.nctu.edu.tw/unimath/2018-02/win?tmpl=%2Fsystem%2Fapp%2Ftemplates%2Fprint%2F&showPrintDialog=1
 */

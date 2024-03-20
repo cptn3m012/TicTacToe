@@ -4,15 +4,12 @@
 using namespace std;
 
 /*
-* Metoda polega na wstawieniu znaku gracza na plansze i walidacji danych.
-* Metoda sprawdza czy putX wynosi X, ponieważ człowiek zawsze gra jako X.
-* Jeżeli jest to X to w terminalu pojawia się pytanie o to, gdzie chcę
-* się wstawić znak. Miejsce zostaje wczytane do zmiennej i później
-* podstawione jako miejsce na planszy, która jest drukowana na początku gry.
- * Dzięki walidacji osoba nie może wpisać znaku w pole, które jest już
- * zajęte oraz jeśli będzie poza zasięgiem planszy.
+* This method is responsible for allowing a player to place their mark ('X' for human players)
+* on the game board and ensures the input data is validated. The method checks if the chosen
+* position is within the acceptable range and not already occupied. If the input is valid,
+* the mark is placed on the board; otherwise, the user is prompted to try again.
 *
-* @param putX - wstawia krzyżyk na planszę
+* @param putX - the character 'X' to be placed on the game board by the human player.
 */
 
 void Game::putOnBoard(char putX) {
@@ -37,25 +34,20 @@ void Game::putOnBoard(char putX) {
             gameBoard[mark - 1] = 'X';
             cout << endl << endl;
         }
-
-
     } while (error);
 
     system("cls");
 }
 
-
-
 /*
-* Metoda polega na sprawdzeniu każdej możliwej wygranej przez komputer.
-* Metoda sprawdza wiersze, kolumny i wiersze sprawdzając czy w jedenj linii
-* nie znajdują się 3 pola zajęte przez komputer, dzięi czemu wiadomo czy komputer
-* wygrał. Natomiast gdy metoda nie znajduję żadnego znaku na planszy, oznacza to,
-* że na planszy nie ma już żadnego możliwego ruchu, czyli nastąpił remis.
+* This method checks for a win condition by examining all possible winning combinations.
+* It checks rows, columns, and diagonals to determine if any line contains three 'O's,
+* which would mean a win for the computer. If no available moves are left on the board
+* and no winner has been declared, the result is a draw.
 */
 
 void Game::checkForWin() {
-    //sprawdzenie w poziomie i pionie czy nie ma wygranej
+    //checking horizontally and vertically for wins
     if (gameBoard[0] == 'O' && gameBoard[1] == 'O' && gameBoard[2] == 'O' || gameBoard[3] == 'O' && gameBoard[4] == 'O' && gameBoard[5] == 'O'
         || gameBoard[6] == 'O' && gameBoard[7] == 'O' && gameBoard[8] == 'O' || gameBoard[0] == 'O' && gameBoard[3] == 'O' && gameBoard[6] == 'O'
         || gameBoard[1] == 'O' && gameBoard[4] == 'O' && gameBoard[7] == 'O' || gameBoard[2] == 'O' && gameBoard[5] == 'O' && gameBoard[8] == 'O')
@@ -64,7 +56,7 @@ void Game::checkForWin() {
         cout << gameBoard << endl;
         exit(0);
     }
-    //sprawdzenie w ukosie czy nie ma wygranej
+    //checking in the diagonal for winnings
     else if (gameBoard[0] == 'O' && gameBoard[4] == 'O' && gameBoard[8] == 'O' || gameBoard[6] == 'O' && gameBoard[4] == 'O' && gameBoard[2] == 'O')
     {
         cout << "Komputer wygrał!!!" << endl;
@@ -72,7 +64,7 @@ void Game::checkForWin() {
         exit(0);
 
     }
-    //sprawdzenie czy na planszy żadna z liczb nie jest liczbą od 1 do 9
+    //checking that none of the numbers on the board is a number from 1 to 9
     else if (gameBoard[0] != '1' && gameBoard[1] != '2' && gameBoard[2] != '3' && gameBoard[3] != '4' && gameBoard[4] != '5' && gameBoard[5] != '6'
         && gameBoard[6] != '7' && gameBoard[7] != '8' && gameBoard[8] != '9')
     {
@@ -80,18 +72,16 @@ void Game::checkForWin() {
         cout << gameBoard << endl;
         exit(0);
     }
-
-
 }
 
 /*
-* Metoda polega na bronieniu się przez komputer, dzięki czemu zablokuje on każdy zagrożony ruch.
-* Metoda po kolei sprawdza wiersze, kolumny oraz przękątne i gdy dwa pole są zajęte X-em przez osobę
-* to w 3 polu w jednej linii komputer broni się i wstawia O.
+* The method is part of the computer's defensive strategy. It scans rows, columns, and diagonals
+* to find any two 'X's without a third, blocking these lines by placing an 'O'. This prevents the
+* human player from winning on their next move and positions the computer to potentially win.
 */
 
 void Game::defense() {
-    //sprawdzenie pierwszego wiersza
+    //checking the first line
     if (gameBoard[0] == 'X' && gameBoard[1] == 'X')
     {
         gameBoard[2] = 'O';
@@ -105,7 +95,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-    // sprawdzenie drugiego wiersza
+    //checking second line
     else if (gameBoard[3] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[5] = 'O';
@@ -119,7 +109,7 @@ void Game::defense() {
         gameBoard[3] = 'O';
     }
 
-    //sprawdzenie trzeciego wiersza
+    //checking the third line
     else if (gameBoard[6] == 'X' && gameBoard[7] == 'X')
     {
         gameBoard[8] = 'O';
@@ -133,7 +123,7 @@ void Game::defense() {
         gameBoard[6] = 'O';
     }
 
-    //sprawdzenie pierwszej kolumny
+    //checking the first column
     if (gameBoard[0] == 'X' && gameBoard[3] == 'X')
     {
         gameBoard[6] = 'O';
@@ -147,7 +137,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-    //sprawdzenie drugiej kolumny
+    //checking second column
     else if (gameBoard[1] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[7] = 'O';
@@ -161,7 +151,7 @@ void Game::defense() {
         gameBoard[1] = 'O';
     }
 
-    //sprawdzenie trzeciej kolumny
+    //checking the third column
     else if (gameBoard[2] == 'X' && gameBoard[5] == 'X')
     {
         gameBoard[8] = 'O';
@@ -176,7 +166,7 @@ void Game::defense() {
     }
 
 
-    //sprawdzenie pierwszej przekątnej
+    //checking the first diagonal
     if (gameBoard[0] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[8] = 'O';
@@ -190,7 +180,7 @@ void Game::defense() {
         gameBoard[0] = 'O';
     }
 
-    //sprawdzenie drugiej przekątnej
+    //checking the second diagonal
     else if (gameBoard[2] == 'X' && gameBoard[4] == 'X')
     {
         gameBoard[6] = 'O';
@@ -208,10 +198,9 @@ void Game::defense() {
 
 
 /*
-* Metoda polega na wykonywaniu ostatniego ruchu do wygrania przez komputer.
-* Metoda po kolei sprawdza wiersze, kolumny i wiersze i w momencie gdy dwa pola na planszy
-* w jednej linii są zajęte przez komputer, a trzecie nie jest zajęte przez człowieka to
-* komputer stawia w to miejsce O, dzięki czemu ma pewną wygraną.
+* This method is used by the computer to perform the final move for a win. It checks rows,
+* columns, and diagonals, and when it finds two 'O's in line, with the third space not
+* occupied by an 'X', the computer places an 'O' to secure the win.
 */
 
 void Game::lastMove() {

@@ -4,10 +4,9 @@
 using namespace std;
 
 /*
-* Metoda polega na przywitaniu gracza oraz spytania się czy człowiek chciałby rozpocząć grę.
-* Metoda jest tak skonstrułowana, że, gdy człowiek chcę rozpocząc grę staje się X-em, lecz
-* gdy nie chcę jej rozpocząć to komputer ją zaczyna jako O.
-*
+* This method greets the player and asks if they would like to start the game.
+* It's structured in a way that if the player chooses to start, they play as 'X'.
+* Conversely, if they choose not to start, the computer begins the game as 'O'.
 */
 
 int Person::whoStart() {
@@ -30,12 +29,12 @@ int Person::whoStart() {
 
 
 /*
-* Sztuczna inteligencja dla człowieka została zrobiona tak, że człowiek zaczyna grę gdzie chcę.
-* Komputer na te ruchy odpowiada dzięki schematow i broni się na nie w większości remisujać
-* lub przez głupi ruch człowieka sprawd i metodzie sprawdzającej możliwe ruchy wygranej
-* zakańcza gre jak najszybcie.
+* The human game logic allows them to start the game wherever they prefer.
+* The computer responds to these moves with patterns, defending against them
+* in most cases leading to a draw or leveraging poor moves by the player to
+* win the game by examining potential winning moves quickly.
 *
-* Źródła z których niektóre możliwe kobinacje kółka i krzyżyk zostały zaczerpnięte:
+* Sources from which some possible tic-tac-toe combinations were drawn:
 * https://www.youtube.com/watch?v=OmC07DvEayY&t=83s
 * https://sites.google.com/a/g2.nctu.edu.tw/unimath/2018-02/win?tmpl=%2Fsystem%2Fapp%2Ftemplates%2Fprint%2F&showPrintDialog=1
 */
@@ -132,9 +131,7 @@ void Person::game()
             Game::putOnBoard('X');
             Game::lastMove();
             Game::checkForWin();
-
         }
-
     }
     else if (mark == 7 || mark == 3)
     {
@@ -167,7 +164,6 @@ void Person::game()
                 Game::checkForWin();
             }
         }
-
     }
     else if (mark == 5)
     {
@@ -200,7 +196,6 @@ void Person::game()
                 Game::checkForWin();
             }
         }
-
     }
     else if (mark == 2 || mark == 8)
     {
@@ -231,7 +226,6 @@ void Person::game()
             Game::putOnBoard('X');
             Game::lastMove();
             Game::checkForWin();
-
         }
 
     }
@@ -266,11 +260,6 @@ void Person::game()
             Game::putOnBoard('X');
             Game::lastMove();
             Game::checkForWin();
-
         }
-
     }
-
-
-
 }
